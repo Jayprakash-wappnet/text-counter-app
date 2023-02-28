@@ -4,6 +4,8 @@ function TextArea(props) {
   const handleUpCase = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted into Uppper case","success");
+
   };
   const handleOnChange = (event) => {
     console.log("You clicked on change !");
@@ -13,21 +15,29 @@ function TextArea(props) {
   const handleLowcase = () => {
     let lowCase = text.toLowerCase();
     setText(lowCase);
+    props.showAlert("Converted into Lower case","success");
+
   };
   const handleClearText = () => {
     let clrText = "";
     setText(clrText);
+    props.showAlert("Text cleared","success");
+
   };
 
   const handleCopy = () => {
     let text = document.getElementById("textBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Text copied into clipboard","success");
+
   };
 
   const handleExtraSpaces = () => {
     let exText = text.split(/[ ]+/);
     setText(exText.join(" "));
+    props.showAlert("Extra spaces removed","success");
+
   };
 
   const [text, setText] = useState("");

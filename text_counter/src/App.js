@@ -12,16 +12,19 @@ function App() {
       message : message ,
       type : type
     })
+    setTimeout (() => {
+      setAlert(null);
+    },1500)
   }
   const toggleMode = () => {
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#254574";
-      showAlert("Dark mode has been enabled","Success");
+      showAlert("Dark mode has been enabled","success");
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
-      showAlert("Light mode has been enabled","Success");
+      showAlert("Light mode has been enabled","success");
 
     }
   };
@@ -37,7 +40,7 @@ function App() {
       <Alert  alert = {alert}/>
       {/* if you not pass any props the it show default props */}
       <div className="container">
-        <TextArea heading="Enter Your Text Here..." mode={mode} />
+        <TextArea heading="Enter Your Text Here..." mode={mode} showAlert = {showAlert} />
       </div>
       <About />
     </div>
