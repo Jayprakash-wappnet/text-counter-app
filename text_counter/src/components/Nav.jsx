@@ -1,16 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
 function Nav(props) {
   return (
     <div>
-      <nav
-        className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
-      >
+      <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <NavLink className="navbar-brand" to="/">
             {props.title}
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -28,19 +27,19 @@ function Nav(props) {
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <NavLink className="nav-link active" aria-current="page" to="/">
                   {props.home}
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <NavLink className="nav-link" to="/about">
                   About
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <NavLink className="nav-link" to="/">
                   Contact Us
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>

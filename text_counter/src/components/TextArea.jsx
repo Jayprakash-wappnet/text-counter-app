@@ -4,8 +4,7 @@ function TextArea(props) {
   const handleUpCase = () => {
     let newText = text.toUpperCase();
     setText(newText);
-    props.showAlert("Converted into Uppper case","success");
-
+    props.showAlert("Converted into Uppper case", "success");
   };
   const handleOnChange = (event) => {
     console.log("You clicked on change !");
@@ -15,35 +14,34 @@ function TextArea(props) {
   const handleLowcase = () => {
     let lowCase = text.toLowerCase();
     setText(lowCase);
-    props.showAlert("Converted into Lower case","success");
-
+    props.showAlert("Converted into Lower case", "success");
   };
   const handleClearText = () => {
     let clrText = "";
     setText(clrText);
-    props.showAlert("Text cleared","success");
-
+    props.showAlert("Text cleared", "success");
   };
 
   const handleCopy = () => {
     let text = document.getElementById("textBox");
     text.select();
     navigator.clipboard.writeText(text.value);
-    props.showAlert("Text copied into clipboard","success");
-
+    props.showAlert("Text copied into clipboard", "success");
   };
 
   const handleExtraSpaces = () => {
     let exText = text.split(/[ ]+/);
     setText(exText.join(" "));
-    props.showAlert("Extra spaces removed","success");
-
+    props.showAlert("Extra spaces removed", "success");
   };
 
   const [text, setText] = useState("");
   return (
     <>
-      <div className="mb-3 my-5 justify-start" style={{color : props.mode === 'dark' ? 'white' : 'black'}}>
+      <div
+        className="mb-3 my-5 justify-start"
+        style={{ color: props.mode === "dark" ? "white" : "black" }}
+      >
         <label htmlFor="exampleFormControlTextarea1" className="form-label">
           {/* Heading is passed using props concept*/}
           <h2>{props.heading}</h2>
@@ -54,8 +52,11 @@ function TextArea(props) {
           rows="8"
           value={text}
           onChange={handleOnChange}
-          style = {{backgroundColor : props.mode === 'dark' ? '#254574' : 'white',color : props.mode === 'dark' ? 'white' : 'black' }}>
-        </textarea>
+          style={{
+            backgroundColor: props.mode === "dark" ? "#254574" : "white",
+            color: props.mode === "dark" ? "white" : "black",
+          }}
+        ></textarea>
         <button className="btn btn-primary mt-2 mx-3" onClick={handleUpCase}>
           Convert Into Uppercase
         </button>{" "}
@@ -77,14 +78,21 @@ function TextArea(props) {
       </div>
 
       {/* below code for count total words and character */}
-      <div className="container my-8" style={{color : props.mode === 'dark' ? 'white' : 'black'}}>
+      <div
+        className="container my-8"
+        style={{ color: props.mode === "dark" ? "white" : "black" }}
+      >
         <h2>Your text analysis:</h2>
         <p>
-          {text.split(" ").length} Words,{text.length} character
+          {text.split(" ").filter((element)=>{return element.length !=0}).length} Words,{text.length} character
         </p>
         <p>To read text take a time : {0.008 * text.split(" ").length}</p>
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : "Write Some thing into Above text box for Preview"}</p>
+        <p>
+          {text.length > 0
+            ? text
+            : "Write Some thing into Above text box for Preview"}
+        </p>
       </div>
     </>
   );
